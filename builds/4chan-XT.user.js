@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         4chan XT
-// @version      2.24.2
+// @version      2.24.3
 // @minGMVer     1.14
 // @minFFVer     78
 // @namespace    4chan-XT
-// @description  4chan XT is a script that adds various features to anonymous imageboards.
-// @license      MIT; https://github.com/TuxedoTako/4chan-xt/blob/project-XT/LICENSE
+// @description  Thread filtering, a searchable catalog and a thread watcher for supported imageboards. Preservation fork of discontinued 4chan XT.
+// @license      MIT; https://github.com/SysAdminDoc/4chan-xt/blob/project-XT/LICENSE
 // @include      https://boards.4chan.org/*
 // @include      https://sys.4chan.org/*
 // @include      https://www.4chan.org/*
@@ -77,8 +77,8 @@
 // @grant        GM.openInTab
 // @grant        GM.xmlHttpRequest
 // @run-at       document-start
-// @updateURL    none
-// @downloadURL  none
+// @updateURL    https://raw.githubusercontent.com/SysAdminDoc/4chan-xt/project-XT/builds/4chan-XT.meta.js
+// @downloadURL  https://raw.githubusercontent.com/SysAdminDoc/4chan-xt/project-XT/builds/4chan-XT.user.js
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAACVBMVEUAAGcAAABmzDNZt9VtAAAAAXRSTlMAQObYZgAAAF5JREFUeNrtkTESABAQxPD/R6tsE2dUGYUtFJvLDKf93KevHJAjpBorAQWSBIKqFASC4G0pCAkm4GfaEvgYXl0T6HBaE97f0vmnfYHbZOMLZCx9ISdKWwjOWZSC8GYm4SUGwfYgqI4AAAAASUVORK5CYII=
 // @license      MIT
 // ==/UserScript==
@@ -169,25 +169,26 @@
   'use strict';
 
   var version = {
-    "version": "2.24.2",
-    "date": "2025-12-23T20:20:20Z"
-  };
+    "version": "2.24.3",
+    "date": "2026-09-08T16:00:00Z"
+  }
+  ;
 
   var meta = {
    "name": "4chan XT",
    "path": "4chan-XT",
-   "fork": "TuxedoTako",
-   "page": "https://github.com/TuxedoTako/4chan-xt",
-   "downloads": "https://github.com/TuxedoTako/4chan-xt/releases",
+   "fork": "SysAdminDoc",
+   "page": "https://github.com/SysAdminDoc/4chan-xt",
+   "downloads": "https://github.com/SysAdminDoc/4chan-xt/releases",
    "oldVersions": "https://raw.githubusercontent.com/ccd0/4chan-x/",
    "faq": "https://github.com/TuxedoTako/4chan-xt/wiki/Frequently-Asked-Questions",
    "upstreamFaq": "https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions",
    "captchaFAQ": "https://github.com/ccd0/4chan-x/wiki/Captcha-FAQ",
    "cssGuide": "https://github.com/ccd0/4chan-x/wiki/Styling-Guide",
-   "license": "https://github.com/TuxedoTako/4chan-xt/blob/project-XT/LICENSE",
-   "changelog": "https://github.com/TuxedoTako/4chan-xt/blob/project-XT/CHANGELOG.md",
-   "issues": "https://github.com/TuxedoTako/4chan-xt/issues",
-   "newIssue": "https://github.com/TuxedoTako/4chan-xt/issues",
+   "license": "https://github.com/SysAdminDoc/4chan-xt/blob/project-XT/LICENSE",
+   "changelog": "https://github.com/SysAdminDoc/4chan-xt/blob/project-XT/CHANGELOG.md",
+   "issues": "https://github.com/SysAdminDoc/4chan-xt/issues",
+   "newIssue": "https://github.com/SysAdminDoc/4chan-xt/issues",
    "newIssueMaxLength": 8181,
    "alternatives": "https://www.4chan-x.net/4chan_alternatives.html",
    "appid": "lacclbnghgdicfifcamcmcnilckjamag",
@@ -197,7 +198,8 @@
     "chrome": "90",
     "firefox": "78",
     "greasemonkey": "1.14"
-   }
+   },
+   "raw": "https://raw.githubusercontent.com/SysAdminDoc/4chan-xt/project-XT/builds"
   };
 
   const Conf = Object.create(null);
@@ -7327,7 +7329,7 @@ svg.icon {
             }
             break;
           case 40: // Down
-            if (next = this.findNextEntry(entry, +1)) {
+            if (next = this.findNextEntry(entry, 1)) {
               this.focus(next);
             }
             break;
@@ -7679,7 +7681,7 @@ svg.icon {
       if (g.VIEW === 'thread') {
         return window.scrollTo(0, d.body.scrollHeight);
       } else {
-        return Nav.scroll(+1);
+        return Nav.scroll(1);
       }
     },
 
@@ -7700,7 +7702,7 @@ svg.icon {
       d.activeElement?.blur();
       let thread = Nav.getThread();
       if (!thread) { return; }
-      const axis = delta === +1 ?
+      const axis = delta === 1 ?
         'following'
       :
         'preceding';
@@ -7709,7 +7711,7 @@ svg.icon {
         // and thus wanting to move to beginning,
         // or we're above the first thread and don't want to skip it.
         const top = Header.getTopOf(thread);
-        if (((delta === +1) && (top < 5)) || ((delta === -1) && (top > -5))) { thread = next; }
+        if (((delta === 1) && (top < 5)) || ((delta === -1) && (top > -5))) { thread = next; }
       }
       // Add extra space to the end of the page if necessary so that all threads can be selected by keybinds.
       const extra = (Header.getTopOf(thread) + doc.clientHeight) - d.body.getBoundingClientRect().bottom;
@@ -16452,7 +16454,7 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
       }
       // Thread Navigation
       if (key === Conf['Next thread'] && g.VIEW === 'index' && threadRoot) {
-        Nav.scroll(+1);
+        Nav.scroll(1);
         hasAction = true;
       }
       if (key === Conf['Previous thread'] && g.VIEW === 'index' && threadRoot) {
@@ -16475,7 +16477,7 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
       }
       // Reply Navigation
       if (key === Conf['Next reply'] && threadRoot) {
-        Keybinds.hl(+1, threadRoot);
+        Keybinds.hl(1, threadRoot);
         hasAction = true;
       }
       if (key === Conf['Previous reply'] && threadRoot) {
@@ -16493,7 +16495,7 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
       }
       if (key === Conf['Quick Filter MD5'] && threadRoot) {
         post = Keybinds.post(threadRoot);
-        Keybinds.hl(+1, threadRoot);
+        Keybinds.hl(1, threadRoot);
         Filter.quickFilterMD5.call(post, e);
         hasAction = true;
       }
@@ -16636,13 +16638,13 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
         if ((Header.getTopOf(postEl) >= -height) && (Header.getBottomOf(postEl) >= -height)) { // We're at least partially visible
           let next;
           const {root} = Get.postFromNode(postEl).nodes;
-          const axis = delta === +1 ?
+          const axis = delta === 1 ?
             'following'
           :
             'preceding';
           if (!(next = $.x(`${axis}-sibling::${g.SITE.xpath.replyContainer}[not(@hidden) and not(child::div[@class='stub'])][1]`, root))) { return; }
           if (!next.matches(replySelector)) { next = $(replySelector, next); }
-          Header.scrollToIfNeeded(next, delta === +1);
+          Header.scrollToIfNeeded(next, delta === 1);
           $.addClass(next, highlight);
           $.rmClass(postEl, highlight);
           return;
@@ -16653,7 +16655,7 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
       const replies = $$(replySelector, thread);
       if (delta === -1) { replies.reverse(); }
       for (var reply of replies) {
-        if (((delta === +1) && (Header.getTopOf(reply) > 0)) || ((delta === -1) && (Header.getBottomOf(reply) > 0))) {
+        if (((delta === 1) && (Header.getTopOf(reply) > 0)) || ((delta === -1) && (Header.getBottomOf(reply) > 0))) {
           $.addClass(reply, highlight);
           return;
         }

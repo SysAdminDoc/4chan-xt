@@ -1,133 +1,90 @@
-# 4chan XT is dead
+# 4chan XT
 
-I stopped using 4chan since the hack. I now browse alt chans that actually care about their users, and don't need an 
-userscript fighting their shitty design.
+![Version](https://img.shields.io/badge/version-2.24.3-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Platform](https://img.shields.io/badge/platform-Chromium%20%7C%20userscript-555)
 
-<details>
-<summary>Old readme</summary>
+A searchable thread catalog with filters and a thread watcher for supported imageboards.
 
-4chan XT is a script that adds various features to anonymous imageboards. It was originally developed for 4chan but has
-no affiliation with it.
+**This is a preservation fork.** [Upstream development ended on December 23, 2025](https://github.com/TuxedoTako/4chan-xt). This copy preserves the existing interface and adds a checked Manifest V3 package with clearer setup instructions. It isn't an upstream relaunch, and it doesn't promise current compatibility with every board.
 
-4chan XT was originally forked from [4chan X](https://github.com/ccd0/4chan-x) for
-[this PR](https://github.com/ccd0/4chan-x/pull/3341), It is a migration of 4chan X from coffeescript to
-TypeScript/JavaScript. It is named XT both as a continuation of eXTended, and a T for TypeScript. The goals of this
-project is to first get a working bundle from js/ts files, and then gradually convert js files to ts and add types as
-needed.
+[Download v2.24.3](https://github.com/SysAdminDoc/4chan-xt/releases/tag/v2.24.3) · [Install instructions](#install) · [Changes](CHANGELOG.md)
 
-New features since the fork include:
+![4chan XT settings in the installed Manifest V3 extension](assets/marketing/screenshots/settings.png)
 
-- Fetching the thread from an external archive and inserting deleted posts
-- Basic audio posts support
-- Automatically converting unsupported image files to png
-- Automatically JPG'ing image files above the size limit
-- Having both relative time and a timestamp on a post at the same time
-- Counting poster ID's as a replacement of the deleted IP counter
-- Hiding all posts from a poster ID in a thread
-- A manifest v3 version for chromium browsers dropping support for v2
-- A button to un-randomize a filename in the quick reply
-- Showing the reason a post was filtered in the stub
-- Marking replies to your post on the scroll bar
+The actual extension, captured in isolated Chromium with the Tomorrow theme. The surrounding board and posts use fictional offline data. No live posts, uploads or media downloads were used for this review.
 
-4chan X was previously developed by [ccd0](https://github.com/ccd0/4chan-x),
-[aeosynth](https://github.com/aeosynth/4chan-x), [Mayhem](https://github.com/MayhemYDG/4chan-x),
-[ihavenoface](https://github.com/ihavenoface/4chan-x), [Zixaphir](https://github.com/zixaphir/appchan-x),
-[Seaweed](https://github.com/seaweedchan/4chan-x), and [Spittie](https://github.com/Spittie/4chan-x), with contributions
-from many others.
+## What it does
 
-## Please note
-**Uninstalling**: 4chan XT disables the native extension, so if you uninstall 4chan XT, you'll need to re-enable it.
-To do this, click the `[Settings]` link in the top right corner, uncheck "`Disable the native extension`" in the panel
-that appears, and click the "`Save Settings`" button. If you don't see a "`Save Settings`" button, it may be being
-hidden by your ad blocker.
+| Task | Where to start |
+| --- | --- |
+| Find a discussion | Search the catalog, sort by reply count, or reverse the order. |
+| Keep a thread handy | Use its heart button, then open **Thread Watcher** in the header. |
+| Hide posts that don't interest you | Open **Settings → Filter** and choose a field. Rules use regular expressions. |
+| Keep your preferences | Use **Export** and **Import** in Settings. Review the privacy notes below before sharing an export. |
 
-**Private browsing**: By default, 4chan XT remembers your last read post in a thread and which posts were made by you,
-even if you are in private browsing / incognito mode. If you want to turn this off, uncheck the
-`Remember Last Read Post` and `Remember Your Posts` options in the settings panel. You can clear all 4chan browsing
-history saved by 4chan XT by resetting your settings. This fork also includes an option to export settings without
-exporting your history.
+![Thread Watcher holding a fictional home-lab discussion](assets/marketing/screenshots/watcher.png)
 
-Use of the "Link Title" feature to fetch titles of Youtube links is subject to Youtube's
-[Terms of Service](https://www.youtube.com/t/terms) and [Privacy Policy](http://www.google.com/policies/privacy).
-For more details on what information is sent to Youtube and other sites, and how to turn it off if you don't want the
-feature, see upstream 4chan X's [privacy documentation](https://github.com/ccd0/4chan-x/wiki/Privacy).
+There are also inherited tools for quote previews, archive lookups, media handling and quick replies. Those integrations depend on third-party sites. This release doesn't claim that posting, CAPTCHA, external archives or media conversion were tested end to end.
 
 ## Install
 
-To run an user script, you need an user script manager like Violentmonkey
-\([Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag),
-[Firefox](https://addons.mozilla.org/firefox/addon/violentmonkey/),
-[Edge](https://microsoftedge.microsoft.com/addons/detail/eeagobfjdenkkddmbclomhiblgggliao)), or tampermonkey
-\([Chrome](https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo),
-[Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/),
-[Edge](https://microsoftedge.microsoft.com/addons/detail/iikmkjmpaadaobahmlepeloendndfphd),
-[Safari](https://apps.apple.com/app/tampermonkey/id6738342400)).
+Choose **one** installation method. Running the userscript and extension together, or alongside another 4chan X copy, can cause conflicts. Export your existing settings before changing installations.
 
-This fork is distributed through [GitHub releases](https://github.com/TuxedoTako/4chan-xt/releases) and [Greasy Fork](https://greasyfork.org/scripts/489508-4chan-xt).
-There are known issues with updating user scripts through GitHub: [#34](https://github.com/TuxedoTako/4chan-xt/issues/34)
-[violentmonkey#1673](https://github.com/violentmonkey/violentmonkey/issues/1673), but Greasy Fork doesn't allow the
-minified version. Automatic updates are supported for the user script version, but not the Chrome extension.
+### Chromium extension
 
-## Build from source
+1. Download [the Manifest V3 ZIP](https://github.com/SysAdminDoc/4chan-xt/releases/download/v2.24.3/4chan-XT-v2.24.3-chromium.zip).
+2. Extract it into a permanent folder. Keep that folder after installation.
+3. Open your browser's Extensions page and enable **Developer mode**.
+4. Select **Load unpacked** and choose the extracted folder containing `manifest.json`.
 
-The simplest build is as easy as `npm install` `npm run build`, but there are some options:
+The ZIP is the installable extension, not GitHub's automatic source archive. Its default manifest is already V3; don't rename files or try to load the old V2 manifest. [Chrome has removed Manifest V2 support](https://developer.chrome.com/docs/extensions/develop/migrate/mv2-deprecation-timeline).
 
-- `-min`: Minified output.
-- `-platform=userscript`, `-platform=crx`: Only builds for one platform, and removes code related to only the other.
-  Note that without this, the code is only build once without this optimization for both.
-- `-no-format` Skips some formatting like switching the indent from the TypeScript output back from 4 to 2, and removing
-  the decaffeinate suggestions comments. Might speed up the build, but the result is larger.
-- `-test` Include tests in build.
+Unpacked extensions don't update automatically. Close supported board tabs, replace the files in the same folder with a new release, click **Reload** on the Extensions page, and reopen the tabs. Changing folders can change an unpacked extension's identity and leave its saved settings behind.
 
-## Troubleshooting
-If you encounter a bug, try the steps [here](https://github.com/TuxedoTako/4chan-xt/blob/project-XT/CONTRIBUTING.md#reporting-bugs),
-then report it to the [issue tracker](https://github.com/TuxedoTako/4chan-xt/issues?q=is%3Aopen+sort%3Aupdated-desc).
-If the bug seems to be caused by a script update, you can install a old version from the
-[GitHub releases](https://github.com/TuxedoTako/4chan-xt/releases) or from
-[Greasy Fork](https://greasyfork.org/scripts/489508-4chan-xt/versions).
+No signed CRX or Firefox XPI is supplied. The original signing identity isn't available in this checkout, and this fork doesn't claim an upstream store listing.
 
-## More information
-- [Changelog](https://github.com/TuxedoTako/4chan-xt/blob/project-XT/CHANGELOG.md)
-- [Frequently Asked Questions for this fork](https://github.com/TuxedoTako/4chan-xt/wiki/Frequently-Asked-Questions)
-- [Frequently Asked Questions for upstream, most should still apply](https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions)
-- [Report Bugs](https://github.com/TuxedoTako/4chan-xt/issues?q=is%3Aopen+sort%3Aupdated-desc)
-- [Contributing](https://github.com/TuxedoTako/4chan-xt/blob/project-XT/CONTRIBUTING.md)
+### Userscript
 
-### TODO
+Install a compatible manager such as [Violentmonkey](https://violentmonkey.github.io/get-it/) first. Then open the readable [4chan-XT.user.js](https://raw.githubusercontent.com/SysAdminDoc/4chan-xt/project-XT/builds/4chan-XT.user.js) in the manager, review its permissions, and install it. A downloaded copy is also included in the release.
 
-<details>
-<summary>Click to expand</summary>
+Unlike upstream's final release, this fork's update metadata points to **SysAdminDoc/4chan-xt**. Your manager controls update checks. You can disable automatic updates in that manager if you prefer to review each version. There's no promise of a future release schedule.
 
-- find alternative for `<% if (`
-  - [x] made html templates jsx/txt functions
-    - this uses the typescript compiler to compile the jsx
-    - render code is in [src/globals/jsx.ts](./src/globals/jsx.ts)
-  - [x] binary files are included as base64 in the bundle step, they do need explicit imports
-  - [x] `<% if (readJSON('/.tests_enabled')) { %>`
-    - replaced by `// #region tests_enabled` `// #endregion`
-- build script
-  - [x] userscript
-  - [ ] .crx extension
-    - [x] crx directory that can be loaded as an unpacked extension is created
-- [x] port updates made to 4chan-X made since this was forked
-- [ ] Clean up circular dependencies
+The namespace is unchanged from 4chan XT. Installing this copy may replace an existing XT userscript. Keep your settings backup; 4chan X uses a different namespace.
 
-</details>
+## Privacy and removal
 
-### Other notes about this fork
+4chan XT isn't an anonymity or security tool. It can store the last post you read and which posts are yours, including during private browsing. Turn off **Remember Last Read Post** and **Remember Your Posts** if you don't want that history retained.
 
-<details>
-<summary>Click to expand</summary>
+**Exports include history by default.** Clear **Export history** in the export dialog to leave out watched threads, last-read positions and related history. The file can still contain personal preferences, filter rules and saved values. Don't upload a full settings file to a public issue or paste site.
 
-- A lot of files have circular dependencies, but rollup can handle that
-  - but for some scripts that add to the same object I had to merge them, like Posting/QR and site/SW.yotsuba.js
-  - sometimes something might not be initialized before use, for example, `$.dict()` and `$.SECONDS`
-    - I moved these to a new file called helpers.ts, which shouldn't have dependencies itself
-- tsconfig.json has `"checkJs": true,`, and a lot of js files report type errors when opened because of unknown
-  properties on objects and reassigning variables with different types. These errors don't block the bundle at this moment.
-- the es 2020 target was chosen for optional chaining
-- @violentmonkey/types was chosen over @types/greasemonkey because @types/greasemonkey only declares the GM object,
-  and not GM\_ functions
+![The export dialog with history explicitly turned off](assets/marketing/screenshots/export.png)
 
-</details>
-</details>
+The userscript requests broad cross-origin access for inherited integrations. The extension requests access to its supported sites and can ask for additional origins. Archive lookups, link titles and embedded media may send requests to external services. Review [the inherited privacy guide](https://github.com/ccd0/4chan-x/wiki/Privacy) and turn off features you don't need. Their providers' terms and privacy policies still apply.
+
+After uninstalling XT, the site's native extension may still be disabled. Open the site's own **Settings**, clear **Disable the native extension**, then save the site's settings.
+
+## Build and verification
+
+Development requires Node.js 22 or newer and npm. Clone this repository, then run:
+
+```sh
+npm ci
+npm run build:release
+```
+
+The release command cleans only known generated artifacts, rebuilds the userscript and reloadable extension, runs the local tests, then verifies every ZIP entry against its source. Packages and SHA-256 checksums are written to `dist/`.
+
+For regular development, use `npm run build` or `npm run build:crx`. `npm run build:userscript` builds only the userscript. The existing `-test` build option includes upstream's interactive browser checks.
+
+**The TypeScript migration is unfinished.** The baseline and reviewed extension build each report 576 distinct TypeScript diagnostics, printed twice across the main script and worker builds (1,152 messages). A successful bundle is not a clean typecheck. See [the roadmap](ROADMAP.md) for the remaining work.
+
+The local review exercised search, sorting, watched threads, saved filters and history-excluding exports on fictional data in the installed Chromium extension and in Violentmonkey 2.48.0. Both installation methods passed 20 local behavior checks each. See [verification notes](assets/marketing/VERIFICATION.md) for evidence and limits. Firefox, Tampermonkey, live posting and third-party services aren't covered by those checks.
+
+## History and support
+
+This fork descends from [TuxedoTako's 4chan XT](https://github.com/TuxedoTako/4chan-xt), a TypeScript/JavaScript migration of [ccd0's 4chan X](https://github.com/ccd0/4chan-x). Earlier work by aeosynth, Mayhem, ihavenoface, Zixaphir, Seaweed and Spittie remains credited in the source and [MIT license](LICENSE). Neither project is affiliated with 4chan.
+
+The inherited pixel-X icon is retained. [Original artwork and screenshot comparisons](assets/marketing/concepts/README.md) are saved with the repository, along with [unadopted identity briefs](LOGO_PROMPTS.md). No new logo has been selected.
+
+See [contributing and troubleshooting](CONTRIBUTING.md) before reporting an issue with this copy. The archived upstream issue tracker and wikis are historical references, not active support channels.

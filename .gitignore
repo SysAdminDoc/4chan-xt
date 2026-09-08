@@ -1,4 +1,13 @@
 node_modules/
+CLAUDE.md
+CODEX_CHANGELOG.md
+.claude/
+*.pem
+*.key
+*.log
+.env
+.env.*
+.reports/
 /npm-shrinkwrap.json
 *~
 *.db

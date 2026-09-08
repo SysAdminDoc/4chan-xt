@@ -1,4 +1,4 @@
-export default function generateManifestJson(p, xtVersion, manifestVersion) {
+export default function generateManifestJson(p, xtVersion, manifestVersion = 3) {
   const manifest = {
     "name": p.meta.name,
     "version": xtVersion.version,

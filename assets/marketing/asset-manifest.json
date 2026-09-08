@@ -1,0 +1,199 @@
+{
+  "project": "4chan XT",
+  "version": "2.24.3",
+  "reviewDate": "2026-09-08",
+  "identity": "Inherited pixel-X retained, no new logo approved. Five future briefs are unexecuted.",
+  "capture": "Installed Manifest V3 extension, headless Chromium, fictional offline board data. Panel crops are direct browser captures, not edited pixels.",
+  "versions": {
+    "before": "2.24.2",
+    "after": "2.24.3"
+  },
+  "readmePreview": "Local GFM rendering at desktop and narrow widths, not the live GitHub page.",
+  "productSourceSHA256": {
+    "script.js": "d52f71cf87e2a0faabaa0f68d4501e969d4003f03119b49063e0a95ce217ef4b",
+    "eventPage.js": "4928526f8478c497b4b3207b313d7b71d814ee72879cccf1f7cab54d181f0519",
+    "manifest.json": "0481be3b88c8b66abb330f925335b4274d6381e7e9330538fdfec540485aa447"
+  },
+  "selected": [
+    "screenshots/settings.png",
+    "screenshots/watcher.png",
+    "screenshots/export.png"
+  ],
+  "images": [
+    {
+      "path": "concepts/after/01-settings.png",
+      "bytes": 96153,
+      "width": 900,
+      "height": 600,
+      "sha256": "a8fb8f8413247ce2d8ed4b6e230e4f4845364c65c84627a88320fa20b6ca56dd"
+    },
+    {
+      "path": "concepts/after/02-search.png",
+      "bytes": 34800,
+      "width": 1440,
+      "height": 1000,
+      "sha256": "5f77dae1742c918dff8107c8d7d1b9fc95b24e2c55a4a5c4c05c8960166c9458"
+    },
+    {
+      "path": "concepts/after/03-catalog.png",
+      "bytes": 50921,
+      "width": 1440,
+      "height": 1000,
+      "sha256": "1c2d42d7c638b4a1d4bf16a8189bd03030dfe900f70171ba085fcdfcb5a28bb0"
+    },
+    {
+      "path": "concepts/after/04-watcher.png",
+      "bytes": 3471,
+      "width": 202,
+      "height": 38,
+      "sha256": "f6c51685384bbb9bb03c9e4283e029d77399d3ce3727bb703916f06bec80ce5b"
+    },
+    {
+      "path": "concepts/after/05-export-context.png",
+      "bytes": 135034,
+      "width": 1440,
+      "height": 1000,
+      "sha256": "8fd932de22d0fdd588f941586e11d1853ebbd1bbf84fa2df4e2782951d796550"
+    },
+    {
+      "path": "concepts/after/05-export.png",
+      "bytes": 4801,
+      "width": 261,
+      "height": 76,
+      "sha256": "c5ef4c25cbe15aa3cef3117c105e9613acd0cec93c41fb91685ff5c9d826503f"
+    },
+    {
+      "path": "concepts/after/06-filter.png",
+      "bytes": 9673,
+      "width": 900,
+      "height": 600,
+      "sha256": "0b9261c719d2ad844068dd4be5b644d3b6788eae5cd400822eb8758cbe210c0d"
+    },
+    {
+      "path": "concepts/after/07-thread.png",
+      "bytes": 25563,
+      "width": 1430,
+      "height": 309,
+      "sha256": "072ea1ef4341d215f9ed67cb82397213ed587de0d16d8dd4f80e083e09cc0dfb"
+    },
+    {
+      "path": "concepts/before/01-settings.png",
+      "bytes": 96155,
+      "width": 900,
+      "height": 600,
+      "sha256": "e3496bd2a8633b351fc1db199b0399c2e9c489bfaae6936ae27cfe4e429023af"
+    },
+    {
+      "path": "concepts/before/02-search.png",
+      "bytes": 34800,
+      "width": 1440,
+      "height": 1000,
+      "sha256": "5f77dae1742c918dff8107c8d7d1b9fc95b24e2c55a4a5c4c05c8960166c9458"
+    },
+    {
+      "path": "concepts/before/03-catalog.png",
+      "bytes": 50888,
+      "width": 1440,
+      "height": 1000,
+      "sha256": "9e9f6119f9500918ef82e84a76f8e5ab5da81910f701c24743d2054f0da5c3b0"
+    },
+    {
+      "path": "concepts/before/04-watcher.png",
+      "bytes": 3471,
+      "width": 202,
+      "height": 38,
+      "sha256": "f6c51685384bbb9bb03c9e4283e029d77399d3ce3727bb703916f06bec80ce5b"
+    },
+    {
+      "path": "concepts/before/05-export-context.png",
+      "bytes": 135143,
+      "width": 1440,
+      "height": 1000,
+      "sha256": "177cfeb19f217ef20cde98a4782176ff642043c97d4dd05f7075169ac5d4fa08"
+    },
+    {
+      "path": "concepts/before/05-export.png",
+      "bytes": 4801,
+      "width": 261,
+      "height": 76,
+      "sha256": "c5ef4c25cbe15aa3cef3117c105e9613acd0cec93c41fb91685ff5c9d826503f"
+    },
+    {
+      "path": "concepts/before/06-filter.png",
+      "bytes": 9670,
+      "width": 900,
+      "height": 600,
+      "sha256": "8789a0028fbbfa418cf67347633aa122a7fd6d2879ebff2ec4e13481cc4187af"
+    },
+    {
+      "path": "concepts/before/07-thread.png",
+      "bytes": 25563,
+      "width": 1430,
+      "height": 309,
+      "sha256": "072ea1ef4341d215f9ed67cb82397213ed587de0d16d8dd4f80e083e09cc0dfb"
+    },
+    {
+      "path": "concepts/originals/icon128.png",
+      "bytes": 196,
+      "width": 128,
+      "height": 128,
+      "sha256": "2afafa25433ea1cd775b795d2af79107b4ffcc7d871ca550e2b162fba2b60492"
+    },
+    {
+      "path": "concepts/originals/icon16.png",
+      "bytes": 154,
+      "width": 16,
+      "height": 16,
+      "sha256": "4ac57c88efadca9eee1f7741eb3aceb40d72212d9b41a0841c3e8cdd46745e00"
+    },
+    {
+      "path": "concepts/originals/icon48.png",
+      "bytes": 185,
+      "width": 48,
+      "height": 48,
+      "sha256": "94bf172e06c4ae9b5291edb16609a6a71c816140eb632dbf59a9c1adc680e290"
+    },
+    {
+      "path": "concepts/readme-preview/readme-desktop.png",
+      "bytes": 297657,
+      "width": 1280,
+      "height": 1100,
+      "sha256": "d84a073576ab34f211ce12a39dd00e5345a86361657b77a7ece5a8197173c6e6"
+    },
+    {
+      "path": "concepts/readme-preview/readme-mobile.png",
+      "bytes": 94694,
+      "width": 390,
+      "height": 844,
+      "sha256": "df51287c6ba81aedec47560dbf1db13303443d42eea03fb838195bae257984f3"
+    },
+    {
+      "path": "concepts/readme-preview/readme-privacy.png",
+      "bytes": 102921,
+      "width": 1280,
+      "height": 1100,
+      "sha256": "8242f1d508a6daa7d7d02be6147859a836c4ee7c701322710b1d8d6859973e6b"
+    },
+    {
+      "path": "screenshots/export.png",
+      "bytes": 4801,
+      "width": 261,
+      "height": 76,
+      "sha256": "c5ef4c25cbe15aa3cef3117c105e9613acd0cec93c41fb91685ff5c9d826503f"
+    },
+    {
+      "path": "screenshots/settings.png",
+      "bytes": 96153,
+      "width": 900,
+      "height": 600,
+      "sha256": "a8fb8f8413247ce2d8ed4b6e230e4f4845364c65c84627a88320fa20b6ca56dd"
+    },
+    {
+      "path": "screenshots/watcher.png",
+      "bytes": 3471,
+      "width": 202,
+      "height": 38,
+      "sha256": "f6c51685384bbb9bb03c9e4283e029d77399d3ce3727bb703916f06bec80ce5b"
+    }
+  ]
+}

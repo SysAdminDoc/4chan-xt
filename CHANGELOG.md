@@ -1,5 +1,20 @@
 ## 4chan XT changelog
 
+### 2.24.3 (2026-09-08)
+
+Preservation-fork release from SysAdminDoc. Upstream remains discontinued.
+
+- Make the default unpacked-extension manifest V3 and add checked release ZIPs.
+- Point this copy's download, update and support links at its own repository.
+- Explain installation choices, history in exports and the limits of this review.
+- Add real installed-extension captures and preserve the inherited icon with a visual review archive.
+- Check the installed extension and Violentmonkey userscript with fictional board data.
+- Refresh affected build dependencies and add local release regression tests.
+
+The inherited interface and feature defaults are unchanged. The build still has
+576 distinct TypeScript diagnostics, printed twice by the extension build. Live posting and third-party integrations
+haven't been verified by this release.
+
 4chan XT uses a different user script namespace than 4chan X, so to migrate you need to export settings from 4chan X,
 and import them in XT.
 
